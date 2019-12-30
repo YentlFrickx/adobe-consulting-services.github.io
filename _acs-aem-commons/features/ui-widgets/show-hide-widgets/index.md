@@ -33,7 +33,7 @@ The following wrapper Client Library node definition must be used to enable this
 
 ### Checkbox field
 1. Add the empty property `acs-cq-dialog-dropdown-checkbox-showhide` to the dropdown/select or checkbox element
-2. Add the data attribute acs-cq-dialog-dropdown-checkbox-showhide-target to the dropdown/select or checkbox element, 
+2. Add the data attribute `acs-cq-dialog-dropdown-checkbox-showhide-target` to the dropdown/select or checkbox element, 
    whose value is a selector, usually a specific class name, to find all possible target elements that can be shown/hidden.
 4. Add the target class to each target component that can be shown/hidden
 5. Add the class hidden to each target component to make them initially hidden
@@ -41,6 +41,21 @@ The following wrapper Client Library node definition must be used to enable this
  - 'true' if the field is to be displayed when Checkbox is selected.
  - '' if the field is to be displayed when Checkbox is unselected (value of false is made empty in JavaScript).
 
-7. Add both acs-dropdownshowhidetargetvalue and acs-checkboxshowhidetargetvalue attribute to each target component, which should beunhidden based on combination of dropdown and checkbox value.
-8. The acs-dropdownshowhidetargetvalue and/or acs-checkboxshowhidetargetvalue attribute can be added to dialog tab items to show and hide them.
-9. (optional) add css class acs-commons-field-required-allow-hidden to provided required field validation, which turns off when the field is hidden
+7. Add both `acs-dropdownshowhidetargetvalue` and `acs-checkboxshowhidetargetvalue` attribute to each target component, which should beunhidden based on combination of dropdown and checkbox value.
+8. The `acs-dropdownshowhidetargetvalue` and/or `acs-checkboxshowhidetargetvalue` attribute can be added to dialog tab items to show and hide them.
+9. (optional) add css class `acs-commons-field-required-allow-hidden` to provided required field validation, which turns off when the field is hidden
+10. (optional) add data attribute `acs-disablewhenhidden` = true to disable the fields when hidden, useful when multiple fields have the same name
+
+### If the fields lie within a multifield
+1. Add the extra empty property `acs-cq-dialog-dropdown-checkbox-showhide-multifield` to the dropdown/select or checkbox element
+
+### If a combination of multiple checkboxes is needed to determine the hiding of fields
+1. Add the empty property `acs-cq-dialog-combo-checkbox-showhide` to the dropdown/select or checkbox element
+2. Add the data attribute `acs-cq-dialog-combo-checkbox-showhide-target` to the dropdown/select or checkbox element,
+   value should be the selector, usually a specific class name, to find all possible target elements that can be shown/hidden.
+3. Add the target class to each target component that can be shown/hidden
+4. Add the class `hide` to each target component to make them initially hidden
+5. Add the attribute `acs-combocheckboxshowhideclasses` to the target component, the value should be a list of the classes that determine the hiding of this field, separated by spaces
+6. Add the attribute `acs-combocheckboxshowhidevalues` to the target component, the value should be a list of the target values of the checkboxes that should be combined
+7. The order of both lists should be the same: the first value should correspond to the first class given
+8. Add the attribute `acs-combocheckboxshowhideoperator` to the target component, the value should reflect the operator that is wanted, currently AND and OR are supported, OR is default
